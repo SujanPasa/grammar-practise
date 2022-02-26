@@ -216,7 +216,7 @@ function randomNumbergenerator(maxRange){
 }
 
 function baseWordSelect(){
-    let position = randomNumbergenerator(5);
+    let position = randomNumbergenerator(30);
     let baseWord = irregularVerbList[position][0];
     console.log("BaseWord: " + baseWord);
     document.getElementById("base-form").innerText = baseWord;
