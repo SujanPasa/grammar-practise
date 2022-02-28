@@ -247,11 +247,15 @@ function baseWordSelect(){
             if(JSON.stringify(answerArray) == JSON.stringify(inputAnswerArray)){
                 console.log("Correct");
             }else{
+                let inputClassList = document.getElementsByClassName("input");
+                console.log("inputClassList: "+ inputClassList);
                 console.log("String" + JSON.stringify(inputAnswerArray));
                 console.log("Incorrect");
                 for(let i = 0; i < answerArray.length; i++){
                     if(answerArray[i]!=inputAnswerArray[i]){
                         console.log(i +" Item Not Matched");
+                        inputClassList[i].style.backgroundColor = "#fc4747";
+                        inputClassList[i].style.color = "#fff";
                     }else{
                         console.log(i +" Item Matched");
                     }
