@@ -274,7 +274,7 @@ function baseWordSelect(){
                   let inputItemList = document.querySelectorAll("input");;
                   console.log(inputItemList);
                   for(i = 0; i < inputItemList.length; i++){
-                        inputItemList[i].value = " ";
+                        inputItemList[i].value = "";
                   }
 
                   gameStart();   
