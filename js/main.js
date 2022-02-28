@@ -240,13 +240,25 @@ function baseWordSelect(){
             inputAnswerArray.push(rawInputV4.replace(/\s/g, ''));
             inputAnswerArray.push(rawInputV5.replace(/\s/g, ''));
             
-            
+            let inputClassList = document.getElementsByClassName("input");
             // process after correct Incorrec
             if(JSON.stringify(answerArray) == JSON.stringify(inputAnswerArray)){
                 console.log("Correct");
-            }else{
-                let inputClassList = document.getElementsByClassName("input");
-                console.log("inputClassList: "+ inputClassList);
+                for(let i = 0; i < answerArray.length; i++){
+                    if(answerArray[i]==inputAnswerArray[i]){
+                        console.log(i +" Matched");
+                        inputClassList[i].classList.add("correct");
+                       }
+                       else{
+                        console.log(i +" Item Not Matched");
+                        inputClassList[i].classList.add("incorrect");
+
+                    }
+                  }
+                }
+                    else{
+                
+                // console.log("inputClassList: "+ inputClassList);
                 console.log("String" + JSON.stringify(inputAnswerArray));
                 console.log("Incorrect");
                 for(let i = 0; i < answerArray.length; i++){
@@ -256,6 +268,8 @@ function baseWordSelect(){
                        
                     }else{
                         console.log(i +" Item Matched");
+                        inputClassList[i].classList.add("correct");
+
                     }
                 }
             }
@@ -264,15 +278,18 @@ function baseWordSelect(){
 
             function nextQuestionEventHandler(){
                 inputAnswerArray = [];
-                let incorrectClassList = document.querySelectorAll(".incorrect");
-                for(let i = 0; i< incorrectClassList.length; i++){
-                    incorrectClassList[i].classList.remove("incorrect");
-                }
+                // let incorrectClassList = document.querySelectorAll(".incorrect");
+                
+                // for(let i = 0; i< incorrectClassList.length; i++){
+                //     incorrectClassList[i].classList.remove("incorrect");
+                // }
 
-                let inputItemList = document.querySelectorAll("input");;
+                let inputItemList = document.querySelectorAll("input");
                 // console.log(inputItemList);
                 for(i = 0; i < inputItemList.length; i++){
-                      inputItemList[i].value = "";
+                    inputItemList[i].classList.remove("incorrect");
+                    inputItemList[i].classList.remove("correct");
+                    inputItemList[i].value = "";
                 }
                 //removing eventHandler is imp to avoid error regarding generating of 2 questin at once
                 nextQuestion.removeEventListener("click",nextQuestionEventHandler);
