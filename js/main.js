@@ -254,14 +254,32 @@ function baseWordSelect(){
                 for(let i = 0; i < answerArray.length; i++){
                     if(answerArray[i]!=inputAnswerArray[i]){
                         console.log(i +" Item Not Matched");
-                        inputClassList[i].style.backgroundColor = "#fc4747";
-                        inputClassList[i].style.color = "#fff";
+                        inputClassList[i].classList.add("incorrect");
+                       
                     }else{
                         console.log(i +" Item Matched");
                     }
                 }
             }
 
+            nextQuestion.addEventListener("click",function(){
+                
+                  inputAnswerArray = [];
+                  
+                  let incorrectClassList = document.querySelectorAll(".incorrect");
+                  for(let i = 0; i< incorrectClassList.length; i++){
+                      incorrectClassList[i].classList.remove("incorrect");
+                  }
+
+                  let inputItemList = document.querySelectorAll("input");;
+                  console.log(inputItemList);
+                  for(i = 0; i < inputItemList.length; i++){
+                        inputItemList[i].value = " ";
+                  }
+
+                  gameStart();   
+            })
+           
 
         });
         
