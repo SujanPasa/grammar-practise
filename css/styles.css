@@ -77,6 +77,11 @@ input{
     color:#fff;
 }
 
+.correct{
+    background-color: #3cff3c;
+
+}
+
 @media screen and (min-width: 800px) {
     *{
         font-size:1.2rem;

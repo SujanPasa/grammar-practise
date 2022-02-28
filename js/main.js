@@ -212,7 +212,6 @@ function randomNumbergenerator(maxRange){
         return positionOnMainObject;
     }
 
-
 }
 
 function baseWordSelect(){
@@ -229,8 +228,7 @@ function baseWordSelect(){
 //eventListiner for Collecting answer input
     function answerChecking(answerArray){
         var inputAnswerArray = [];
-
-        checkAnswer.addEventListener("click",function(){
+        function answerCheckHandler(){
             let rawInputV2 = document.getElementById("verb-2").value;
             let rawInputV3 = document.getElementById("verb-3").value;
             let rawInputV4 = document.getElementById("verb-4").value;
@@ -261,28 +259,30 @@ function baseWordSelect(){
                     }
                 }
             }
+            //inorder to avoid error regarding false incorrect message
+            checkAnswer.removeEventListener("click",answerCheckHandler);
 
-            nextQuestion.addEventListener("click",function(){
-                
-                  inputAnswerArray = [];
-                  
-                  let incorrectClassList = document.querySelectorAll(".incorrect");
-                  for(let i = 0; i< incorrectClassList.length; i++){
-                      incorrectClassList[i].classList.remove("incorrect");
-                  }
+            function nextQuestionEventHandler(){
+                inputAnswerArray = [];
+                let incorrectClassList = document.querySelectorAll(".incorrect");
+                for(let i = 0; i< incorrectClassList.length; i++){
+                    incorrectClassList[i].classList.remove("incorrect");
+                }
 
-                  let inputItemList = document.querySelectorAll("input");;
-                  console.log(inputItemList);
-                  for(i = 0; i < inputItemList.length; i++){
-                        inputItemList[i].value = "";
-                  }
-
-                  gameStart();   
-            })
-           
-
-        });
+                let inputItemList = document.querySelectorAll("input");;
+                // console.log(inputItemList);
+                for(i = 0; i < inputItemList.length; i++){
+                      inputItemList[i].value = "";
+                }
+                //removing eventHandler is imp to avoid error regarding generating of 2 questin at once
+                nextQuestion.removeEventListener("click",nextQuestionEventHandler);
+                gameStart();   
+          };
         
+        nextQuestion.addEventListener("click",nextQuestionEventHandler);
+        };
+        checkAnswer.addEventListener("click",answerCheckHandler);
+         
     }
 
 function gameStart(){
