@@ -235,10 +235,10 @@ function baseWordSelect(){
             let rawInputV5 = document.getElementById("verb-5").value;
 
             //removing extra spaces from input for preventing false negative 
-            inputAnswerArray.push(rawInputV2.replace(/\s/g, ''));
-            inputAnswerArray.push(rawInputV3.replace(/\s/g, ''));
-            inputAnswerArray.push(rawInputV4.replace(/\s/g, ''));
-            inputAnswerArray.push(rawInputV5.replace(/\s/g, ''));
+            inputAnswerArray.push((rawInputV2.replace(/\s/g, '')).toLowerCase());
+            inputAnswerArray.push((rawInputV3.replace(/\s/g, '')).toLowerCase());
+            inputAnswerArray.push((rawInputV4.replace(/\s/g, '')).toLowerCase());
+            inputAnswerArray.push((rawInputV5.replace(/\s/g, '')).toLowerCase());
             
             let inputClassList = document.getElementsByClassName("input");
             // process after correct Incorrec
