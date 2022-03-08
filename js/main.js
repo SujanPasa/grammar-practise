@@ -198,15 +198,14 @@ const irregularVerbList = [
 let randomWordList = [];
 
 function randomWordsSelector(){
-    let noOfWords = 10; //Change it for increasing no of words set in questions.
+    let noOfWords = 15; //Change it for increasing no of words set in questions.
     for(let i= 0; i < noOfWords; i++){
         let wordPosition = Math.floor(Math.random()* noOfWords + 1)
         let newWord = irregularVerbList[wordPosition];
         randomWordList.push(newWord);
     }
+    // console.log(randomWordList.length);
 }
-
-
 
 //radom number generator for selecting key from the object IrregularVerbList
 
@@ -227,7 +226,7 @@ function randomNumbergenerator(maxRange){
 }
 
 function baseWordSelect(){
-    let position = randomNumbergenerator(10);
+    let position = randomNumbergenerator();
     let baseWord = randomWordList[position][0];
     console.log("BaseWord: " + baseWord);
     document.getElementById("base-form").innerText = baseWord;
@@ -290,7 +289,7 @@ function baseWordSelect(){
             checkAnswer.removeEventListener("click",answerCheckHandler);
             nextQuestion.addEventListener("click",nextQuestionEventHandler);
 
-            
+
             function nextQuestionEventHandler(){
                 inputAnswerArray = [];
                 
@@ -327,3 +326,47 @@ function gameStart(){
 }
 
 gameStart();
+
+
+//============================================//===============================
+
+// show hide game section
+
+const sectionWrapper = document.querySelector(".section-wrapper");
+const readMore = document.querySelector(".read");
+const practise = document.querySelector(".practise");
+const tableSection = document.querySelector(".reading-section-wrapper"); 
+
+function practiseToggle(){
+    sectionWrapper.classList.toggle("show-section-wrapper");
+    tableSection.classList.toggle("hide-reading-section-wrapper")
+
+}
+
+practise.addEventListener("click", practiseToggle);
+readMore.addEventListener("click", practiseToggle);
+
+
+//===========================//====================================//===============
+
+//Creating Dymanic Table data
+
+const table = document.querySelector(".read-table");
+
+for(let i = 0; i < randomWordList.length; i++){
+    let row = table.insertRow(i+1); 
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        
+        cell1.innerHTML = i+1;
+        cell2.innerHTML = randomWordList[i][0];
+        cell3.innerHTML = randomWordList[i][1];
+        cell4.innerHTML = randomWordList[i][2];
+        cell5.innerHTML = randomWordList[i][3];
+        cell6.innerHTML = randomWordList[i][4];
+    
+}

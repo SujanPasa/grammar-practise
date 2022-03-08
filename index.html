@@ -10,27 +10,49 @@
 <body>
     <main class="main-container">
         <header class="header-section">Grammar Practise</header>
+        <div class="switch-options">
+            <button class="read btn">Read More</button>
+            <button class="practise btn">Practise</button>
+        </div>
 
-        <section class="content-wrapper">
-            <div class="question-wrapper">
-                <div id="question">Write the verb forms of: </div>
-                <div id="base-form">Base Form </div>
+        <div class="reading-section-wrapper">
+            <div class="table-wrapper">
+                <table class="read-table">
+                    <tr>
+                        <th>S.N.</th>
+                        <th>Verb 1</th>
+                        <th>Verb 2</th>
+                        <th>Verb 3</th>
+                        <th>Verb 4</th>
+                        <th>Verb 5</th>
+                    </tr>
+
+                    <!-- table data is generated and placed by javascript -->
+                    
+                </table>
             </div>
-
-
-            <div class="answer-section">
-                <form action="/" autocomplete="off">
-                    <input type="text" name="verb-2" id="verb-2" placeholder="Verb 2" class="input">
-                    <input type="text" name="verb-3" id="verb-3" placeholder="Verb 3" class="input">
-                    <input type="text" name="verb-4" id="verb-4" placeholder="Verb 4" class="input">
-                    <input type="text" name="verb-5" id="verb-5" placeholder="Verb 5" class="input">
-                </form>
-            </div>
-
-            <button id="check-answer">Check Answer</button>
-            <button id="next-question">Next Question</button>
-
-        </section>
+        </div>
+        <div class="section-wrapper">
+            <section class="content-wrapper">
+                <div class="question-wrapper">
+                    <div id="question">Write the verb forms of: </div>
+                    <div id="base-form">Base Form </div>
+                </div>
+    
+    
+                <div class="answer-section">
+                    <form action="/" autocomplete="off">
+                        <input type="text" name="verb-2" id="verb-2" placeholder="Verb 2" class="input">
+                        <input type="text" name="verb-3" id="verb-3" placeholder="Verb 3" class="input">
+                        <input type="text" name="verb-4" id="verb-4" placeholder="Verb 4" class="input">
+                        <input type="text" name="verb-5" id="verb-5" placeholder="Verb 5" class="input">
+                    </form>
+                </div>
+    
+                <button id="check-answer">Check Answer</button>
+                <button id="next-question">Next Question</button>
+            </section>
+        </div>
     </main>
 
     <script src="./js/main.js"></script>
