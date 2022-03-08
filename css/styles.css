@@ -114,23 +114,33 @@ button:hover{
     margin-left: auto;
     margin-top: 1rem;
     transition: all 0.5s;
-}
-
-.hide-reading-section-wrapper{
-    height: 0px;
-    overflow: hidden;
+    height:100px;
+    max-height: auto;
     transition: all 0.5s;
 }
 
+.hide-reading-section-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 0px;
+    overflow: hidden;
+    
+}
+
+.table-wrapper{
+    height: 100px;
+    max-height: auto;
+}
 table, th, td{
     border:1px solid rebeccapurple;
     border-collapse: collapse;
     text-align: center;
 }
+
 table{
     width: 100%;
     background-color: #fff;
-
     box-shadow: 5px 5px 15px #1c5064;
     
 }
