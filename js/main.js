@@ -195,6 +195,17 @@ const irregularVerbList = [
     /*194:*/ ["write",	"wrote",	"written",	"writing", "writes"]
 ]
 
+let randomWordList = [];
+
+function randomWordsSelector(){
+    let noOfWords = 10; //Change it for increasing no of words set in questions.
+    for(let i= 0; i < noOfWords; i++){
+        let wordPosition = Math.floor(Math.random()* noOfWords + 1)
+        let newWord = irregularVerbList[wordPosition];
+        randomWordList.push(newWord);
+    }
+}
+
 
 
 //radom number generator for selecting key from the object IrregularVerbList
@@ -202,9 +213,10 @@ const irregularVerbList = [
 const checkAnswer = document.getElementById("check-answer");
 const nextQuestion = document.getElementById("next-question");
 
+//For selecting random postion from the given irregularVerb object
 function randomNumbergenerator(maxRange){
     if(maxRange === undefined){
-        maxRange = irregularVerbList.length;
+        maxRange = randomWordList.length;
         let positionOnMainObject = Math.floor(Math.random() * maxRange);
         return positionOnMainObject;
     }else{
@@ -215,11 +227,11 @@ function randomNumbergenerator(maxRange){
 }
 
 function baseWordSelect(){
-    let position = randomNumbergenerator(30);
-    let baseWord = irregularVerbList[position][0];
+    let position = randomNumbergenerator(10);
+    let baseWord = randomWordList[position][0];
     console.log("BaseWord: " + baseWord);
     document.getElementById("base-form").innerText = baseWord;
-    let correctAnswerArray = [irregularVerbList[position][1], irregularVerbList[position][2], irregularVerbList[position][3], irregularVerbList[position][4]];
+    let correctAnswerArray = [randomWordList[position][1], randomWordList[position][2], randomWordList[position][3], randomWordList[position][4]];
     return(correctAnswerArray);
 }
 
@@ -273,11 +285,15 @@ function baseWordSelect(){
                     }
                 }
             }
+
             //inorder to avoid error regarding false incorrect message
             checkAnswer.removeEventListener("click",answerCheckHandler);
+            nextQuestion.addEventListener("click",nextQuestionEventHandler);
 
+            
             function nextQuestionEventHandler(){
                 inputAnswerArray = [];
+                
                 // let incorrectClassList = document.querySelectorAll(".incorrect");
                 
                 // for(let i = 0; i< incorrectClassList.length; i++){
@@ -303,6 +319,7 @@ function baseWordSelect(){
     }
 
 function gameStart(){
+    randomWordsSelector();
     let answerArray = baseWordSelect();
     console.log(answerArray);
     answerChecking(answerArray);
