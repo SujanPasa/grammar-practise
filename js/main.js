@@ -195,19 +195,21 @@ const irregularVerbList = [
     /*194:*/ ["write",	"wrote",	"written",	"writing", "writes"]
 ]
 
+const workingArray = irregularVerbList;
 let randomWordList = [];
 
 function randomWordsSelector(){
     let noOfWords = 15; //Change it for increasing no of words set in questions.
     for(let i= 0; i < noOfWords; i++){
         let wordPosition = Math.floor(Math.random()* noOfWords + 1)
-        let newWord = irregularVerbList[wordPosition];
+        let newWord = workingArray[wordPosition];
+        workingArray.splice(wordPosition, 1);
         randomWordList.push(newWord);
     }
     // console.log(randomWordList.length);
 }
 
-//radom number generator for selecting key from the object IrregularVerbList
+//radom number generator for selecting key from the object workingArray
 
 const checkAnswer = document.getElementById("check-answer");
 const nextQuestion = document.getElementById("next-question");
